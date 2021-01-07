@@ -1,0 +1,118 @@
+{
+    "name": "adityasreeram99-gmail-com",
+    "projects": [{
+        "name": "webdesign one",
+        "date": "12 Dec 2020",
+        "progress": "40%",
+        "left": 4,
+        "desc": "prototyping the nessesary task",
+        "modules": {
+            "name": "webdesign",
+            "submodules": [{
+                "val": "design 1"
+            }, {
+                "val": "design2"
+            }, {
+                "val": "design 1"
+            }, {
+                "val": "design2"
+            }, {
+                "val": "design 1"
+            }, {
+                "val": "design2"
+            }]
+        }
+    }, {
+        "name": "webdesign 2",
+        "date": "16 Dec 2020",
+        "progress": "50%",
+        "left": 4,
+        "desc": "prototyping the nessesary task",
+        "modules": {
+            "name": "webdesign onr",
+            "submodules": [{
+                "val": "design 1"
+            }, {
+                "val": "design2"
+            }, {
+                "val": "design 1"
+            }, {
+                "val": "design2"
+            }, {
+                "val": "design 1"
+            }, {
+                "val": "design2"
+            }]
+        }
+    }, {
+        "name": "web2",
+        "date": "3 jan 2021",
+        "progress": "50%",
+        "left": 10,
+        "desc": "update the new web2",
+        "modules": []
+    }, {
+        "name": "1234",
+        "date": "1 jan 2019",
+        "progress": "0%",
+        "left": "10",
+        "desc": "ideas",
+        "modules": []
+    }, {
+        "name": "new1",
+        "date": "3 feb 2019",
+        "progress": "0%",
+        "left": "10",
+        "desc": "new one",
+        "modules": []
+    }, {
+        "name": "new5",
+        "date": "5 jan 2020",
+        "progress": "0%",
+        "left": "17",
+        "desc": "new 5",
+        "modules": []
+    }, {
+        "name": "new1",
+        "date": "3 feb 2019",
+        "progress": "0%",
+        "left": "10",
+        "desc": "new one",
+        "modules": []
+    }, {
+        "name": "new6",
+        "date": "5 jan 2020",
+        "progress": "0%",
+        "left": "17",
+        "desc": "new 5",
+        "modules": []
+    }, {
+        "name": "new10",
+        "date": "3 jan 2018",
+        "progress": "0%",
+        "left": "10",
+        "desc": "nothing",
+        "modules": []
+    }, {
+        "name": "new117",
+        "date": "3 jan 2019",
+        "progress": "0%",
+        "left": "10",
+        "desc": "nothing",
+        "modules": []
+    }, {
+        "name": "new11",
+        "date": "4 jan 2020",
+        "progress": "0%",
+        "left": "12",
+        "desc": "complete ",
+        "modules": {}
+    }, {
+        "name": "newweb",
+        "date": "3 jan 2020",
+        "progress": "0%",
+        "left": "12",
+        "desc": "final product",
+        "modules": []
+    }]
+}
