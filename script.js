@@ -1,5 +1,7 @@
 var ex = require('express')
+var cors = require('cors')
 var app = ex();
+app.use(cors())
 var bodyParser = require('body-parser');
 const MongoClient = require('mongodb');
 const uri = 'mongodb+srv://aditya:NeuralNet@1@cluster0.tbopk.mongodb.net/playground?retryWrites=true&w=majority'
