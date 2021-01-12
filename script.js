@@ -117,3 +117,52 @@ app.post("/delModule", function(req, res) {
         return res.send({ status: true })
     })
 })
+
+app.post("/addPin", function(req, res) {
+    console.log(req.body)
+    MongoClient.connect(uri, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("playground");
+        dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": req.body.project, "projects.modules.name": req.body.module }, {
+            $push: {
+
+                "projects.$.modules.0.submodules": {
+
+
+
+                    "val": req.body.pin
+
+                }
+
+            },
+            function(err, re) {
+                console.log("1 updated")
+
+            }
+
+        })
+        return res.send({ status: true })
+    })
+
+})
+
+app.post("/delPin", function(req, res) {
+    console.log(req.body)
+    MongoClient.connect(uri, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("playground");
+        dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": req.body.project, "projects.modules.name": req.body.module }, {
+            $pull: {
+
+                "projects.$.modules.0.submodules": { val: req.body.pin }
+
+            },
+            function(err, res) {
+                console.log("1 updated")
+            }
+
+        })
+        return res.send({ status: true })
+    })
+
+})

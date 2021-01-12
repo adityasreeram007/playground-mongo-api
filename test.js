@@ -4,10 +4,10 @@ const uri = 'mongodb+srv://aditya:NeuralNet@1@cluster0.tbopk.mongodb.net/playgro
 MongoClient.connect(uri, function(err, db) {
         if (err) throw err;
         var dbo = db.db("playground");
-        dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": "webdesign one" }, {
+        dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": "webdesign one", "projects.modules.name": "webdesign" }, {
             $pull: {
 
-                "projects.$.modules": { name: "module" }
+                "projects.$.modules.0.submodules": { val: "design 1" }
 
             },
             function(err, res) {
@@ -17,15 +17,18 @@ MongoClient.connect(uri, function(err, db) {
         })
 
     })
-    //     MongoClient.connect(uri, function(err, db) {
-    //         if (err) throw err;
-    //         var dbo = db.db("playground");
-    //         dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": "webdesign one" }, {
-    //             $push: {
+    // MongoClient.connect(uri, function(err, db) {
+    //     if (err) throw err;
+    //     var dbo = db.db("playground");
+    //     dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": "webdesign one", "projects.modules.name": "webdesign" }, {
+    //         $push: {
 
-//             "projects.$.modules": {
-//                 "name": "module",
-//                 "pin": "task1"
+//             "projects.$.modules.0.submodules": {
+
+
+
+//                 "val": "redeo"
+
 //             }
 
 //         },
