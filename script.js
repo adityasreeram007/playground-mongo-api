@@ -123,26 +123,44 @@ app.post("/addPin", function(req, res) {
     MongoClient.connect(uri, function(err, db) {
         if (err) throw err;
         var dbo = db.db("playground");
-        dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": req.body.project, "projects.modules.name": req.body.module }, {
-            $push: {
+        var ind = -1;
+        dbo.collection('userdata').find({ "projects.name": req.body.project }).toArray(function(err, result) {
 
-                "projects.$.modules.0.submodules": {
+            var projects = result[0].projects
+            for (var x in projects) {
+                if (projects[x].name === req.body.project) {
+                    for (var j in projects[x].modules) {
+                        if (projects[x].modules[j].name === req.body.module) {
+                            ind = j
+                            break
+                        }
+                    }
+                }
+            }
+            console.log(ind)
 
+            var q = "projects.$.modules." + ind + ".submodules"
+            var $push = {}
+            $push[q] = { "val": req.body.pin }
+            console.log(q)
 
-
-                    "val": req.body.pin
+            var obj = {
+                $push,
+                function(err, re) {
+                    console.log("1 updated")
 
                 }
 
-            },
-            function(err, re) {
-                console.log("1 updated")
-
             }
+            console.log(obj)
+            dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": req.body.project, "projects.modules.name": req.body.module }, obj)
+            return res.send({ status: true })
 
         })
-        return res.send({ status: true })
-    })
+
+
+
+    });
 
 })
 
@@ -151,18 +169,39 @@ app.post("/delPin", function(req, res) {
     MongoClient.connect(uri, function(err, db) {
         if (err) throw err;
         var dbo = db.db("playground");
-        dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": req.body.project, "projects.modules.name": req.body.module }, {
-            $pull: {
+        var ind = -1;
+        dbo.collection('userdata').find({ "projects.name": req.body.project }).toArray(function(err, result) {
 
-                "projects.$.modules.0.submodules": { val: req.body.pin }
-
-            },
-            function(err, res) {
-                console.log("1 updated")
+            var projects = result[0].projects
+            for (var x in projects) {
+                if (projects[x].name === req.body.project) {
+                    for (var j in projects[x].modules) {
+                        if (projects[x].modules[j].name === req.body.module) {
+                            ind = j
+                            break
+                        }
+                    }
+                }
             }
+            console.log(ind)
 
+            var q = "projects.$.modules." + ind + ".submodules"
+            var $pull = {}
+            $pull[q] = { "val": req.body.pin }
+            console.log(q)
+
+            var obj = {
+                $pull,
+                function(err, re) {
+                    console.log("1 updated")
+
+                }
+
+            }
+            console.log(obj)
+            dbo.collection('userdata').updateOne({ "name": "adityasreeram99-gmail-com", "projects.name": req.body.project, "projects.modules.name": req.body.module }, obj)
+            return res.send({ status: true })
         })
-        return res.send({ status: true })
     })
 
 })
